@@ -1,0 +1,30 @@
+.list{
+  text-align: center !important;
+}
+
+.App-header {
+  background-color: #222;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.possible-food:hover{
+  background-color: yellow;
+}
+
+.moreTop{
+  margin-top: 5px;
+}
+
+.desc{
+  margin-top: 20px;
+}
