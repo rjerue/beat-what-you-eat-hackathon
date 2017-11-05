@@ -79,15 +79,17 @@ class App extends Component {
       return fetch('http://api.nal.usda.gov/ndb/reports/?ndbno='+ food.ndbno +'&type=b&format=json&api_key='+API_KEY).then( result =>
         (result.status === 200) ? result.json() : null
       ).then( value => {
-        this.setState({gotItems: this.state.gotItems.concat(value.report.food)})
-        x = x.concat(value.report.food)
-        if(i === c.length -1){
+        //this.setState({gotItems: this.state.gotItems.concat(value.report.food)})
+        this.setState({reducedFood: this.state.reducedFood.concat(this.minimizeJson(value.report.food))})
+        //x = x.concat(value.report.food)
+        if(false){
+          console.log(c.length)
           this.setState({
             reducedFood: x.reduce((sum, valuex) => {
             return sum.concat(this.minimizeJson(valuex))
           }, [])
-        
-        })}
+        })
+      }
       })
     })).then(
       this.setState({status: "display"})
@@ -124,6 +126,7 @@ class App extends Component {
   }
 
   minimizeJson(e) {
+    console.log(e)
     return {
       name: e.name,
       calories: e.nutrients.reduce((sum, value) => {
